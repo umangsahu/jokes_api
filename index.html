@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jokes website</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card-1">
+            <h2>Jokes</h2>
+            <P id="para" class="para">Why was the robot angry? Because someone kept pressing his buttons!</P>
+
+        </div>
+        <div class="card-2">
+            <button onclick="generatejokes()" class="btn">Next Joke</button>
+        </div>
+    </div>
+    <script>
+        const jokes = document.getElementById('para');
+        const jokebtn = document.getElementsByClassName('btn');
+
+
+        function generatejokes() {
+            const setHeader = {
+                headers: {
+                    accept: "application/json"
+                }
+            }
+            fetch('https://icanhazdadjoke.com', setHeader)
+            .then((res)=>res.json()//iss step m . jo reponse aayega html format mai,use json mai convert karega
+             )
+         .then((data)=>{
+            console.log(jokes);
+             jokes.innerHTML=data.joke}).catch((error)=>{
+                 console.log(error);
+            })
+        }
+
+        
+let max_num = Number.NEGATIVE_INFINITY; // smaller than all other numbers
+console.log(max_num,"hello world");
+
+         </script>
+</body>
+
+</html>
